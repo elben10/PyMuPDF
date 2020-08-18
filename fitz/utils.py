@@ -3198,7 +3198,7 @@ class Shape(object):
         return
 
 
-def apply_redactions(page):
+def apply_redactions(page, font_reduction=0.5):
     """Apply the redaction annotations of the page.
     """
 
@@ -3275,7 +3275,7 @@ def apply_redactions(page):
                     color=redact["text_color"],
                     align=redact["align"],
                 )
-                fsize -= 0.5  # reduce font if unsuccessful
+                fsize -= font_reduction  # reduce font if unsuccessful
     shape.commit()  # append new contents object
     return True
 
